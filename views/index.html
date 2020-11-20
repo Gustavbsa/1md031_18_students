@@ -1,9 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>DELI-VERY</title>
-    </head>
-    <body>
-        <h1>Hello World!!!</h1>
-    </body>
+
+<head>
+    <script src="js/js_script.js" defer></script>
+    <script type="text/javascript" src="js/menu.js"></script>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <title>Goddamn Burgers</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/deli-very.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="/socket.io/socket.io.js" defer></script>
+    <script src="js/vue_script.js" defer></script>
+   
+
+</head>
+
+<body>
+    <main>
+        <div class="head">
+            <header class="background"></header>
+            <h1 class="ontop">Welcome to Goddamn Burgers</h1>
+        </div>
+        <div id="vue">
+        <section class="selectBurger">
+            <h2 style=font-size:30px>Select burger</h2>
+            <p> This is where you execute burger selection</p>
+            <div></div>
+            <div class="wrapper" id=MENU>
+                <div class="box a">
+                        <div v-for="burger in Burgers" v-if="burger.name == 'Killer' && burger.stock > 0" >
+                            <h1 style="font-size: 35px">{{burger.name}}</h1>
+                            <img v-bind:src="burger.img" class="picture">
+                            <li>{{burger.kCal}} <span> kCal</span></li>
+                            <li v-if="burger.lactose">contains: <span id="lactose">lactose</span></li> 
+                            <li v-if="burger.gluten">contains: <span id="gluten">gluten</span></li>
+                            <p class="button">Add to order:
+                            <input type="checkbox" id="Order" name="ham" value="Killer" class="button">
+                                </p>
+                        </div>
+                        
+
+                   
+                </div><!--
+                    <p style="font-size: 20;">Killer</p>
+                    <div></div>
+                    <img src="img/Killer.jpg" title="Killer" style="height: 200px; margin: 20px;">
+                    <div></div>
+                    <ul>
+                        <li>Pickels</li>
+                        <li>200g used meat</li>
+                        <li>Expired bread <span id="gluten">gluten</span></li>
+                    </ul>
+                    <p style="margin: 40px;">
+                        <label for="order">Add to order: </label>
+                        <input type="checkbox" id="Order" name="fn" value="Killer">
+                    </p>
+                </div>
+            -->
+                <div class="box b"> 
+                        <div v-for="burger in Burgers" v-if="burger.name == 'Stop with the cheese' && burger.stock > 0" >
+                            <h1 style="font-size: 35px">{{burger.name}}</h1>
+                            <img v-bind:src="burger.img" class="picture">
+                            <li>{{burger.kCal}} <span> kCal</span></li>
+                            <li v-if="burger.lactose">contains: <span id="lactose">lactose</span></li> 
+                            <li v-if="burger.gluten">contains: <span id="gluten">gluten</span></li>
+                            <p class="button">Add to order:
+                            <input type="checkbox" id="Order" name="ham" value="Stop with the cheese" class="button">
+                            </p>
+                        </div>
+                    
+                <!--
+                    <p style="font-size: 20;">Stop with the cheese</p>
+                    <div></div>
+                    <img src="img/Stop with the cheese.jpg" title="Stop with the cheese"
+                        style="height: 200px;margin: 20px;">
+                    <div></div>
+                    <ul>
+                        <li>2kg cheese <span id="lactose">lactose</span></li>
+                        <li>Extra chedder <span id="lactose">lactose</span></li>
+                        <li>Blue cheese <span id="lactose">lactose</span></li>
+                    </ul>
+                    <p style="margin: 40px;">
+                        <label for="order">Add to order: </label>
+                        <input type="checkbox" id="Order" name="fn" value="Stop with the cheese">
+                    </p>
+                    -->
+                </div>
+                
+
+                <div class="box c">
+                        <div v-for="burger in Burgers" v-if="burger.name == 'Meatgrinder' && burger.stock > 0" >
+                            <h1 style="font-size: 35px">{{burger.name}}</h1>
+                            <img v-bind:src="burger.img" class="picture">
+                            <li>{{burger.kCal}} <span> kCal</span></li>
+                            <li v-if="burger.lactose">contains: <span id="lactose">lactose</span></li> 
+                            <li v-if="burger.gluten">contains: <span id="gluten">gluten</span></li>
+                            <p class="button">Add to order:
+                            <input type="checkbox" id="Order" name="ham" value="Meatgrinder" class="button">
+                            </p>
+                        </div>
+                       
+                    <!--
+                    <p style="font-size: 20;">Meatgrinder</p>
+                    <div></div>
+                    <img src="img/Meatgrinder.jpg" title="Meatgrinder" style="height: 200px;margin: 20px;">
+                    <div></div>
+                    <ul>
+                        <li>Horse meat</li>
+                        <li>Raven meat</li>
+                        <li>Rabbit meat</li>
+                    </ul>
+                    <p style="margin: 40px;">
+                        <label for="order">Add to order: </label>
+                        <input type="checkbox" id="Order" name="fn" value="Meatgrinder">
+                    </p>
+         --> </div>
+            </div>
+        </section>
+        <div></div>
+        <section class="customerInformation">
+            <h3 style=font-size:30px>Customer information</h3>
+            <div></div>
+                <p> This is where you provide necessary information</p>
+                <section id="contact">
+                    <h3 style=font-size:25px>Delivery information:</h3>
+                    <form>
+                        <p>
+                            <label for="First- and Last name">Full name</label><br>
+                            <input type="text" id="fullname" name="fn" required="required"
+                                placeholder="First- and Last name">
+                        </p>
+                        <p>
+                            <label for="E-mail adress">E-mail</label><br>
+                            <input type="text" id="E-mail" name="fn" required="required" placeholder="E-mail adress">
+                        </p>
+                        <p>
+                            <label for="Payment options">Payment options</label><br>
+                            <select id="Payment_options" name="credit card">
+                                <option>Mastercard</option>
+                                <option>Visa</option>
+                                <option>Paypal</option>
+                                <option>Debit</option>
+                            </select>
+                        </p>
+                        <div class="view-box">
+                            <div id="dots" v-on:click="displayOrder">
+                                <div 
+                                  v-for="order in orderList"
+                                  v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
+                                  T
+                                </div>
+                            </div>
+                          </div>
+                        <p>
+                            <label for="Gender">Gender</label><br>
+                            <input type="radio" id="GenderF" name="ge" value="female">Female<br>
+                            <input type="radio" id="GenderM" name="ge" value="male">Male<br>
+                            <input type="radio" id="GenderO" name="ge" value="other">Other
+                        </p>
+                        
+                        <!--<p>
+                            <button type="button" onclick="buttonInfo()"><img src="img/Animated burger.jpg"
+                                    style="height: 20px; margin: 2px;">Place my order</button>
+                        </p>-->
+                    </form>
+                </section> 
+        </section>
+        <div></div>
+        <div id="lastButton">
+            <button type="button" v-on:click="doSomething(); addOrder();"><img src="img/Animated burger.jpg"
+                style="height: 20px; margin: 2px;">Place my order</button>
+                <h2 style="font-size: 20px;">Order customer information</h2>
+                <div></div>
+                <h3 style="font-size: 15px;">Customer details</h3>
+                <p>Name: {{name}}</p>
+                <p>E-mail: {{Email}}</p>
+                <p>Delivery to: <span v-if="orderList[0]">x:{{orderList[0].details.x}}, y:{{orderList[0].details.y}}</span> </p>
+                <p>Payment method: {{payment}}</p>
+                <p>Gender: {{gender}}</p>
+                <div></div>
+                <h3 style="font-size: 20px;">Order summery</h3>
+                <div v-for="hamburgers in burgers">
+                    <li>{{hamburgers}}</li>
+                </div>    
+
+        </div>
+    </div>
+        <footer>
+            <hr>
+            <p>2020 Hypothetical Burgers Inc.</p>
+        </footer>
+    </main>
+</body>
+
 </html>

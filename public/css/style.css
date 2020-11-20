@@ -1,0 +1,109 @@
+/*http://localhost:3000/*/
+/*localhost:3000/map*/
+/*localhost:3000/dispatcher*/ 
+/*node app.js*/
+@import 'https://fonts.googleapis.com/css?family=Pacifico|Dosis';
+body {
+    font-family: "Droid Serif", sans-serif;
+    font-size: 15pt;
+    color: black;
+}
+.head{
+    overflow: hidden;
+}
+.background{
+    background-image: url("/img/background.jpg");
+    height: 500px;
+    width: 100%;
+    opacity: 0.5;
+    position: relative;
+}
+h1.ontop{
+    position: absolute;
+    margin-left: 35%;
+    top: 4.7em;
+}
+
+.selectBurger {
+    background-color: black;
+    color: white;
+    width: 100%;
+    margin: auto;
+    border: 1px dashed white;
+    padding: 1px 10px 10px 30px; 
+}
+
+.headlist{
+    color: white;
+    font-size: 20pt;
+}
+.list{
+    color: white;
+}
+.picture{
+    height: 200px;  
+}
+
+.wrapper {
+    display: grid;
+    grid-gap: 10px;
+    /*grid-template-columns:auto auto auto;*/
+    color: black;
+}
+.box{
+    display: grid;
+    background-color:black;
+    color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 150%;
+    /*grid-template-rows: auto auto auto;*/
+}
+.a {
+    grid-column: 1;
+}
+.b {
+    grid-column: 2;
+}
+.c {
+    grid-column: 3;
+}
+.button {
+    margin-bottom: 0%;
+}
+
+.customerInformation{
+    background-color: white;
+    color: black;
+    width: 100%;
+    border: 1px dashed black;
+    padding: 1px 1px 1px 30px;
+    margin: auto;
+    height: 50%;
+}
+#lastButton{
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+
+#gluten {
+    font-weight: bold;
+}
+#lactose{
+    font-weight: bold;
+}
+#gluten:hover{
+    color: crimson;
+}
+#lactose:hover{
+    color: crimson;
+}
+
+button:hover{
+    background-color: lightsteelblue;
+}
+@media screen and (max-width: 800px) {
+   
+}
